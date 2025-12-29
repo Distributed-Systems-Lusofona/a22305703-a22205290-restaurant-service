@@ -1,5 +1,5 @@
 services:
-  product_db:
+  restaurant_db:
     image: postgres:17
     restart: always
     env_file: ".env"
@@ -29,12 +29,12 @@ services:
     networks:
       - store-network
 
-  product-service:
+  restaurant-service:
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      product_db:
+      restaurant_db:
         condition: service_healthy
     env_file: ".env"
     ports:

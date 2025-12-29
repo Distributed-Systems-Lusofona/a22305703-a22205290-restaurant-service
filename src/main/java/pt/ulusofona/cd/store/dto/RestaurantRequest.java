@@ -8,9 +8,9 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class ProductRequest {
-    @NotBlank(message = "Product name is required")
-    @Size(min = 3, max = 120, message = "Product name must be between 3 and 120 characters")
+public class RestaurantRequest {
+    @NotBlank(message = "Restaurant name is required")
+    @Size(min = 3, max = 120, message = "Restaurant name must be between 3 and 120 characters")
     private String name;
 
     private String description;

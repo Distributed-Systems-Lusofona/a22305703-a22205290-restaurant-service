@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients(basePackages = "pt.ulusofona.cd.store.client")
-public class ProductServiceApplication {
+public class RestaurantServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ProductServiceApplication.class, args);
+        SpringApplication.run(RestaurantServiceApplication.class, args);
     }
 }

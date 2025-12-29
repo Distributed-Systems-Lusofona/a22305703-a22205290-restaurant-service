@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import pt.ulusofona.cd.store.dto.SupplierDeactivatedEvent;
-import pt.ulusofona.cd.store.service.ProductService;
+import pt.ulusofona.cd.store.service.RestaurantService;
 
 @Component
 @RequiredArgsConstructor
 public class SupplierEventConsumer {
 
-    private final ProductService productService;
+    private final RestaurantService productService;
 
     @KafkaListener(topics = "${supplier.events.supplier-deactivated-events}", groupId = "${spring.kafka.consumer.group-id}")
     public void listen(SupplierDeactivatedEvent event) {

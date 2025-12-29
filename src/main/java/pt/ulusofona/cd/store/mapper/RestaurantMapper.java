@@ -1,13 +1,13 @@
 package pt.ulusofona.cd.store.mapper;
 
-import pt.ulusofona.cd.store.model.Product;
-import pt.ulusofona.cd.store.dto.ProductRequest;
-import pt.ulusofona.cd.store.dto.ProductResponse;
+import pt.ulusofona.cd.store.model.Restaurant;
+import pt.ulusofona.cd.store.dto.RestaurantRequest;
+import pt.ulusofona.cd.store.dto.RestaurantResponse;
 
-public class ProductMapper {
+public class RestaurantMapper {
 
-    public static Product toEntity(ProductRequest dto) {
-        Product p = new Product();
+    public static Restaurant toEntity(RestaurantRequest dto) {
+        Restaurant p = new Restaurant();
         p.setName(dto.getName().trim());
         p.setDescription(dto.getDescription());
         p.setSku(dto.getSku().trim());
@@ -18,8 +18,8 @@ public class ProductMapper {
         return p;
     }
 
-    public static ProductResponse toResponse(Product entity) {
-        ProductResponse r = new ProductResponse();
+    public static RestaurantResponse toResponse(Restaurant entity) {
+        RestaurantResponse r = new RestaurantResponse();
         r.setId(entity.getId());
         r.setName(entity.getName());
         r.setDescription(entity.getDescription());

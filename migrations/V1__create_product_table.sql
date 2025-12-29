@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS product (
+CREATE TABLE IF NOT EXISTS restaurant (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(120) NOT NULL,
     description TEXT,
@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS product (
     updated_at TIMESTAMPTZ DEFAULT now()
     );
 
-CREATE INDEX IF NOT EXISTS idx_product_sku ON product(sku);
-CREATE INDEX IF NOT EXISTS idx_product_supplier_id ON product(supplier_id);
-CREATE INDEX IF NOT EXISTS idx_product_name ON product(name);
+CREATE INDEX IF NOT EXISTS idx_product_sku ON restaurant(sku);
+CREATE INDEX IF NOT EXISTS idx_product_supplier_id ON restaurant(supplier_id);
+CREATE INDEX IF NOT EXISTS idx_product_name ON restaurant(name);

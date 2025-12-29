@@ -11,12 +11,12 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "product")
+@Table(name = "restaurant")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", columnDefinition = "UUID")

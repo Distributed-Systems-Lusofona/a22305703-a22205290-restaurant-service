@@ -12,7 +12,7 @@ import io.grpc.stub.StreamObserver;
 @RequiredArgsConstructor
 public class ProductServiceImpl extends ProductServiceGrpc.ProductServiceImplBase {
 
-    private final ProductService productService;
+    private final RestaurantService productService;
 
     @Override
     public void countDiscontinuedProductsBySupplier(
