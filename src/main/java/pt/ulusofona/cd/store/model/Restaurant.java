@@ -10,6 +10,9 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
+
+
+//temos que mudar as tabelas
 @Entity
 @Table(name = "restaurant")
 @Getter
