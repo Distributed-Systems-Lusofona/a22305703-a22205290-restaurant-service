@@ -1,36 +1,33 @@
 package pt.ulusofona.cd.store.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import java.math.BigDecimal;
-import java.util.UUID;
 
 @Getter
 @Setter
 public class RestaurantRequest {
+
     @NotBlank(message = "Restaurant name is required")
-    @Size(min = 3, max = 120, message = "Restaurant name must be between 3 and 120 characters")
+    @Size(min = 2, max = 120, message = "Restaurant name must be between 2 and 120 characters")
     private String name;
 
-    private String description;
+    @NotBlank(message = "City is required")
+    @Size(min = 2, max = 80, message = "City must be between 2 and 80 characters")
+    private String city;
 
-    @NotBlank(message = "SKU is required")
-    @Size(max = 255, message = "SKU must be at most 255 characters long")
-    private String sku;
+    @NotBlank(message = "Country is required")
+    @Size(min = 2, max = 80, message = "Country must be between 2 and 80 characters")
+    private String country;
 
-    @NotNull(message = "Price is required")
-    @DecimalMin(value = "0.0", inclusive = true, message = "Price must be a positive number")
-    private BigDecimal price;
+    @NotBlank(message = "Phone is required")
+    @Size(min = 6, max = 30, message = "Phone must be between 6 and 30 characters")
+    private String phone;
 
-    @Min(value = 0, message = "Stock cannot be negative")
-    private int stock;
-
-    @NotBlank(message = "Currency is required")
-    @Size(min = 3, max = 3, message = "Currency must be a 3-letter ISO code")
-    private String currency = "EUR";
-
-    private boolean isDiscontinued = false;
-
-    private UUID supplierId;
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email must be valid")
+    @Size(max = 255, message = "Email must be at most 255 characters long")
+    private String email;
 }

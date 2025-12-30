@@ -1,73 +1,47 @@
 package pt.ulusofona.cd.store.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.UUID;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
-
-
-//temos que mudar as tabelas
 @Entity
-@Table(name = "restaurant")
+@Table(name = "restaurants")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Restaurant {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", columnDefinition = "UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @NotBlank
-    @Size(min = 3, max = 120)
+    @Size(min = 2, max = 120)
     @Column(name = "name", nullable = false, length = 120)
     private String name;
 
-    @Column(name = "description", columnDefinition = "TEXT")
-    private String description;
+    @NotBlank
+    @Size(min = 2, max = 80)
+    @Column(name = "city", nullable = false, length = 80)
+    private String city;
 
     @NotBlank
-    @Column(name = "sku", nullable = false, unique = true, length = 255)
-    private String sku;
+    @Size(min = 2, max = 80)
+    @Column(name = "country", nullable = false, length = 80)
+    private String country;
 
-    @NotNull
-    @DecimalMin(value = "0.0", inclusive = true)
-    @Column(name = "price", nullable = false, precision = 15, scale = 2)
-    private BigDecimal price;
+    @NotBlank
+    @Size(min = 6, max = 30)
+    @Column(name = "phone", nullable = false, length = 30)
+    private String phone;
 
-    @Min(0)
-    @Column(name = "stock", nullable = false)
-    private int stock;
-
-    @Column(name = "currency", nullable = false, length = 3)
-    private String currency = "EUR";
-
-    @Column(name = "supplier_id", columnDefinition = "UUID")
-    private UUID supplierId;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
-
-    @Column(name = "is_discontinued", nullable = false)
-    private boolean isDiscontinued;
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-        updatedAt = Instant.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = Instant.now();
-    }
+    @NotBlank
+    @Email
+    @Size(max = 255)
+    @Column(name = "email", nullable = false, length = 255)
+    private String email;
 }

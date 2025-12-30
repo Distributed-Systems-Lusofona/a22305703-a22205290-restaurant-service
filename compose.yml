@@ -16,7 +16,7 @@ services:
   flyway:
     image: flyway/flyway:11.12
     depends_on:
-      product_db:
+      restaurant_db:
         condition: service_healthy
     volumes:
       - ./migrations:/flyway/sql
@@ -38,7 +38,7 @@ services:
         condition: service_healthy
     env_file: ".env"
     ports:
-      - "8081:8081"
+      - "8087:8087"
       - "9090:9090"
     volumes:
       - ./src:/app/src
@@ -51,7 +51,7 @@ services:
     restart: always
     env_file: ".env"
     depends_on:
-      product_db:
+      restaurant_db:
         condition: service_healthy
     ports:
       - "7777:80"
