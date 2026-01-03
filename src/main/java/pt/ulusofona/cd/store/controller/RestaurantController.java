@@ -14,7 +14,7 @@ import pt.ulusofona.cd.store.service.RestaurantService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/restaurants")
+@RequestMapping("/api/v1/restaurants")
 @RequiredArgsConstructor
 public class RestaurantController {
 

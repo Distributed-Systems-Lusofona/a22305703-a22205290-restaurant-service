@@ -12,7 +12,8 @@ CREATE TABLE availability_slots (
                                     CONSTRAINT chk_capacity_positive CHECK (capacity > 0),
                                     CONSTRAINT chk_seats_non_negative CHECK (seats_available >= 0),
                                     CONSTRAINT chk_seats_le_capacity CHECK (seats_available <= capacity),
-                                    CONSTRAINT chk_time_order CHECK (end_time > start_time)
+                                    CONSTRAINT chk_time_order CHECK (end_time > start_time),
+                                    CONSTRAINT uq_restaurant_date_start UNIQUE (restaurant_id, date, start_time)
 );
 
 CREATE INDEX idx_availability_restaurant_date_start

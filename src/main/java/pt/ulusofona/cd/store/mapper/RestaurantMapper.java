@@ -9,6 +9,7 @@ public class RestaurantMapper {
     public static Restaurant toEntity(RestaurantRequest dto) {
         Restaurant r = new Restaurant();
         r.setName(dto.getName().trim());
+        r.setAddress(dto.getAddress().trim());
         r.setCity(dto.getCity().trim());
         r.setCountry(dto.getCountry().trim());
         r.setPhone(dto.getPhone().trim());
@@ -20,6 +21,7 @@ public class RestaurantMapper {
         RestaurantResponse r = new RestaurantResponse();
         r.setId(entity.getId());
         r.setName(entity.getName());
+        r.setAddress(entity.getAddress());
         r.setCity(entity.getCity());
         r.setCountry(entity.getCountry());
         r.setPhone(entity.getPhone());

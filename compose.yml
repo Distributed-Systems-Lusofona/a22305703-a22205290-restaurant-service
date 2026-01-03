@@ -13,6 +13,22 @@ services:
     networks:
       - store-network
 
+  flyway:
+    image: flyway/flyway:11.12
+    depends_on:
+      restaurant_db:
+        condition: service_healthy
+    volumes:
+      - ./migrations:/flyway/sql
+    command: >
+      -url=jdbc:postgresql://restaurant_db:5432/$POSTGRES_DB
+      -user=$POSTGRES_USER
+      -password=$POSTGRES_PASSWORD
+      migrate
+    env_file: ".env"
+    networks:
+      - store-network
+
   restaurant-service:
     build:
       context: .
@@ -20,29 +36,20 @@ services:
     depends_on:
       restaurant_db:
         condition: service_healthy
+      flyway:
+        condition: service_completed_successfully
     env_file: ".env"
     ports:
       - "8087:8087"
-    networks:
-      - store-network
-
-  pgadmin:
-    image: dpage/pgadmin4:9.8.0
-    restart: always
-    env_file: ".env"
-    depends_on:
-      restaurant_db:
-        condition: service_healthy
-    ports:
-      - "7777:80"
     volumes:
-      - pgadmin_data:/var/lib/pgadmin
+      - ./src:/app/src
+      - ~/.m2:/root/.m2
     networks:
       - store-network
 
 volumes:
   db_data:
-  pgadmin_data:
 
 networks:
-  store-network: {}
+  store-network:
+    external: true

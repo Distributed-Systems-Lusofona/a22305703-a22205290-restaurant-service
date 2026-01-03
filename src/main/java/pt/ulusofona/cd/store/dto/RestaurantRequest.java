@@ -14,6 +14,10 @@ public class RestaurantRequest {
     @Size(min = 2, max = 120, message = "Restaurant name must be between 2 and 120 characters")
     private String name;
 
+    @NotBlank(message = "Address is required")
+    @Size(min = 2, max = 200, message = "Address must be between 2 and 200 characters")
+    private String address;
+
     @NotBlank(message = "City is required")
     @Size(min = 2, max = 80, message = "City must be between 2 and 80 characters")
     private String city;

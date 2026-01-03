@@ -25,6 +25,11 @@ public class Restaurant {
     private String name;
 
     @NotBlank
+    @Size(min = 2, max = 255)
+    @Column(name = "address", nullable = false, length = 255)
+    private String address;
+
+    @NotBlank
     @Size(min = 2, max = 80)
     @Column(name = "city", nullable = false, length = 80)
     private String city;

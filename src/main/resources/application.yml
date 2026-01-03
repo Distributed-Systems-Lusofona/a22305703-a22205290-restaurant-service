@@ -1,9 +1,9 @@
 server:
-  port: ${PORT}
+  port: 8087
 
 spring:
   application:
-    name: ${APPLICATION_NAME}
+    name: restaurant-service
 
   datasource:
     url: jdbc:postgresql://restaurant_db:5432/${POSTGRES_DB}
@@ -11,47 +11,13 @@ spring:
     password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
-
-#Tem alterações que mudam as autoridades do flyway
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: validate
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
-
-#  kafka:
-#    consumer:
-#      bootstrap-servers: kafka:9092
-#      group-id: restaurant-service-group
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#      properties:
-#        spring.json.trusted.packages: "*"
-
-#  grpc:
-#    server:
-#      port: 9090
-
-#supplier:
-#  events:
-#    supplier-deactivated-events: supplier-deactivated-events
-
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 10000
-        loggerLevel: FULL
-  hystrix:
-    enabled: false
-
-logging:
-  level:
-    pt.ulusofona.cd.store.shared.client: DEBUG
-    feign: DEBUG
 
 management:
   endpoints:
