@@ -30,7 +30,7 @@ public class AvailabilityService {
             throw new RestaurantNotFoundException("Restaurant not found with id: " + restaurantId);
         }
 
-        // slots do restaurante nesse dia com lugares suficientes
+        // slots do restaurante no dia com lugares suficientes
         return availabilitySlotRepository.findAvailableSlots(restaurantId, date, partySize);
     }
 }

@@ -14,7 +14,7 @@ import pt.ulusofona.cd.store.service.RestaurantService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/restaurants")
+@RequestMapping("/api/restaurants")
 @RequiredArgsConstructor
 public class RestaurantController {
 
@@ -38,7 +38,6 @@ public class RestaurantController {
                 .stream()
                 .map(RestaurantMapper::toResponse)
                 .toList();
-
         return ResponseEntity.ok(responseList);
     }
 

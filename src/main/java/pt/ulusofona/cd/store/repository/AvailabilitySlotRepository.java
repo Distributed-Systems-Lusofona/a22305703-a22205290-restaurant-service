@@ -72,8 +72,7 @@ public interface AvailabilitySlotRepository extends JpaRepository<AvailabilitySl
             @Param("restaurantId") Long restaurantId
     );
 
-    // ✅ ESTE É O TEU "findSlotForUpdate"
-    // Útil quando o Reservation Service te manda scheduledAt (date + time) + partySize
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""
         SELECT s FROM AvailabilitySlot s

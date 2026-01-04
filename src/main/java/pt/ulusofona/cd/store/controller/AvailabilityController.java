@@ -29,7 +29,7 @@ public class AvailabilityController {
     }
 
     @PostMapping("/availability/release")
-    public ResponseEntity<Void> release(
+    public ResponseEntity<Void> releaseSeats(
             @PathVariable Long restaurantId,
             @Valid @RequestBody ReleaseSeatsRequest request
     ) {
